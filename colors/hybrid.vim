@@ -96,18 +96,18 @@ else
   let s:gui_comment    = "#707880"
 endif
 
-let s:palette.gui.background = { 'dark' : s:gui_background , 'light' : "#e4e4e4" }
+let s:palette.gui.background = { 'dark' : s:gui_background , 'light' : "#f0f0f0" }
 let s:palette.gui.foreground = { 'dark' : "#c5c8c6"        , 'light' : "#000000" }
 let s:palette.gui.selection  = { 'dark' : s:gui_selection  , 'light' : "#bcbcbc" }
 let s:palette.gui.line       = { 'dark' : s:gui_line       , 'light' : "#d0d0d0" }
-let s:palette.gui.comment    = { 'dark' : s:gui_comment    , 'light' : "#5f5f5f" }
+let s:palette.gui.comment    = { 'dark' : s:gui_comment    , 'light' : "#808080" }
 let s:palette.gui.red        = { 'dark' : "#cc6666"        , 'light' : "#5f0000" }
 let s:palette.gui.orange     = { 'dark' : "#de935f"        , 'light' : "#875f00" }
 let s:palette.gui.yellow     = { 'dark' : "#f0c674"        , 'light' : "#5f5f00" }
-let s:palette.gui.green      = { 'dark' : "#b5bd68"        , 'light' : "#005f00" }
+let s:palette.gui.green      = { 'dark' : "#b5bd68"        , 'light' : "#008000" }
 let s:palette.gui.aqua       = { 'dark' : "#8abeb7"        , 'light' : "#005f5f" }
-let s:palette.gui.blue       = { 'dark' : "#81a2be"        , 'light' : "#00005f" }
-let s:palette.gui.purple     = { 'dark' : "#b294bb"        , 'light' : "#5f005f" }
+let s:palette.gui.blue       = { 'dark' : "#81a2be"        , 'light' : "#000080" }
+let s:palette.gui.purple     = { 'dark' : "#b294bb"        , 'light' : "#94558d" }
 let s:palette.gui.window     = { 'dark' : "#303030"        , 'light' : "#9e9e9e" }
 let s:palette.gui.darkcolumn = { 'dark' : "#1c1c1c"        , 'light' : "#808080" }
 let s:palette.gui.addbg      = { 'dark' : "#5F875F"        , 'light' : "#d7ffd7" }
@@ -118,7 +118,7 @@ let s:palette.gui.delbg      = { 'dark' : "#cc6666"        , 'light' : "#ffd7d7"
 let s:palette.gui.darkblue   = { 'dark' : "#00005f"        , 'light' : "#d7ffd7" }
 let s:palette.gui.darkcyan   = { 'dark' : "#005f5f"        , 'light' : "#005f00" }
 let s:palette.gui.darkred    = { 'dark' : "#5f0000"        , 'light' : "#d7d7ff" }
-let s:palette.gui.darkpurple = { 'dark' : "#5f005f"        , 'light' : "#5f005f" }
+let s:palette.gui.darkpurple = { 'dark' : "#5f005f"        , 'light' : "#660099" }
 
 if exists("g:hybrid_custom_term_colors") && g:hybrid_custom_term_colors == 1
   let s:cterm_foreground = "15"  " White
@@ -342,22 +342,23 @@ exe "hi! Normal"        .s:fg_foreground  .s:bg_normal      .s:fmt_none
 " Generic Syntax Highlighting: (see :help group-name)"{{{
 " ----------------------------------------------------------------------------
 exe "hi! Comment"         .s:fg_comment     .s:bg_none        .s:fmt_none
+exe "hi! Include"         .s:fg_blue        .s:bg_none        .s:fmt_bold
 
-exe "hi! Constant"        .s:fg_red         .s:bg_none        .s:fmt_none
-exe "hi! String"          .s:fg_green       .s:bg_none        .s:fmt_none
+exe "hi! Constant"        .s:fg_blue         .s:bg_none        .s:fmt_none
+exe "hi! String"          .s:fg_green       .s:bg_none        .s:fmt_bold
 "   Character"
 "   Number"
 "   Boolean"
 "   Float"
 
-exe "hi! Identifier"      .s:fg_purple      .s:bg_none        .s:fmt_none
-exe "hi! Function"        .s:fg_yellow      .s:bg_none        .s:fmt_none
+exe "hi! Identifier"      .s:fg_foreground  .s:bg_none        .s:fmt_none
+exe "hi! Function"        .s:fg_foreground  .s:bg_none        .s:fmt_none
 
-exe "hi! Statement"       .s:fg_blue        .s:bg_none        .s:fmt_none
+exe "hi! Statement"       .s:fg_blue        .s:bg_none        .s:fmt_bold
 "   Conditional"
 "   Repeat"
 "   Label"
-exe "hi! Operator"        .s:fg_aqua        .s:bg_none        .s:fmt_none
+exe "hi! Operator"        .s:fg_foreground  .s:bg_none        .s:fmt_none
 "   Keyword"
 "   Exception"
 
@@ -367,9 +368,9 @@ exe "hi! PreProc"         .s:fg_aqua        .s:bg_none        .s:fmt_none
 "   Macro"
 "   PreCondit"
 
-exe "hi! Type"            .s:fg_orange      .s:bg_none        .s:fmt_none
+exe "hi! Type"            .s:fg_foreground  .s:bg_none        .s:fmt_none
 "   StorageClass"
-exe "hi! Structure"       .s:fg_aqua        .s:bg_none        .s:fmt_none
+exe "hi! Structure"       .s:fg_blue        .s:bg_none        .s:fmt_none
 "   Typedef"
 
 exe "hi! Special"         .s:fg_green       .s:bg_none        .s:fmt_none
@@ -416,6 +417,12 @@ hi! link diffAdded Special
 
 "}}}
 "
+" Python: "{{{
+
+exe "hi! pythonComment"         .s:fg_comment     .s:bg_none        .s:fmt_none
+exe "hi! pythonClassVar"        .s:fg_purple      .s:bg_none        .s:fmt_none
+exe "hi! pythonBuiltin"         .s:fg_blue        .s:bg_none        .s:fmt_none
+" }}}
 " This is needed for some reason: {{{
 
 let &background = s:style
